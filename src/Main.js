@@ -25,14 +25,15 @@ try {
   }, app).listen(port, function () {
     console.log("Running https GramCore on port " + port);
   });
+  const http = require('http');
+  http.createServer(function (req, res) {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+    res.end();
+  }).listen(80);
 } catch (e) {
   app.listen(port, function () {
     console.log("Running http GramCore on port " + port);
   });
 }
 
-const http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-  res.end();
-}).listen(80);
+
