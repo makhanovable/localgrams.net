@@ -1,5 +1,6 @@
 let express = require('express');
 let bodyParser = require('body-parser');
+let forceSsl = require('express-force-ssl');
 let app = express();
 const https = require('https');
 const fs = require('fs');
@@ -8,8 +9,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(forceSsl);
 
-let port = 80;
+let port = 443;
 app.get('/', function (request, response) {
   response.sendFile('html/index.html', {root: __dirname});
 });
