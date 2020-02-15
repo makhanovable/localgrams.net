@@ -1,6 +1,5 @@
 let express = require('express');
 let bodyParser = require('body-parser');
-let forceSsl = require('express-force-ssl');
 let app = express();
 const https = require('https');
 const fs = require('fs');
@@ -9,7 +8,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(forceSsl);
 
 let port = 443;
 app.get('/', function (request, response) {
@@ -32,3 +30,9 @@ try {
     console.log("Running http GramCore on port " + port);
   });
 }
+
+const http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+  res.end();
+}).listen(80);
