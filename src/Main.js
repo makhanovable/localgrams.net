@@ -14,11 +14,11 @@ app.get('/', function (request, response) {
   response.sendFile('html/index.html', {root: __dirname});
 });
 app.use('/api', apiRoutes);
-const path = require("path");
-const key = fs.readFileSync(path.resolve(__dirname, 'ssl/localgrams.key'));
-const cert = fs.readFileSync(path.resolve(__dirname, 'ssl/localgrams.crt'));
 
 try {
+  const path = require("path");
+  const key = fs.readFileSync(path.resolve(__dirname, 'ssl/localgrams.key'));
+  const cert = fs.readFileSync(path.resolve(__dirname, 'ssl/localgrams.crt'));
   https.createServer({
     cert: cert,
     key: key,
