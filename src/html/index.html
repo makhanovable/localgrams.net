@@ -1,0 +1,60 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>LocalGrams</title><style></style></head><body id="preview">
+<h1 class="code-line" data-line-start=0 data-line-end=1 ><a id="Localgramsnet_0"></a><a href="http://Localgrams.net">LocalGrams.net</a></h1>
+<p class="has-line-data" data-line-start="1" data-line-end="2"><a target="_blank" href="https://github.com/makhanovable/localgrams.net">https://github.com/makhanovable/localgrams.net</a></p>
+<h4 class="code-line" data-line-start=2 data-line-end=3 ><a id="Running_2"></a>Running:</h4>
+<pre><code class="has-line-data" data-line-start="4" data-line-end="7">npm install
+npm start
+</code></pre>
+<h4 class="code-line" data-line-start=8 data-line-end=9 ><a id="Create_new_wallet_POST_8"></a>Create new wallet (POST):</h4>
+<pre><code class="has-line-data" data-line-start="10" data-line-end="12">https://localgrams.net/api/wallet/new
+</code></pre>
+<h5 class="code-line" data-line-start=13 data-line-end=14 ><a id="Response_Example_13"></a>Response Example:</h5>
+<pre><code class="has-line-data" data-line-start="15" data-line-end="27">{
+    &quot;code&quot;: 200,
+    &quot;message&quot;: &quot;Wallet Created but not initialized&quot;,
+    &quot;data&quot;: {
+        &quot;balance&quot;: 0,
+        &quot;state&quot;: 0,
+        &quot;public_key&quot;: &quot;8611c9dc7e78388ba9fb55d12946cd9d3582b12eaacc2794511697264145a9f6&quot;,
+        &quot;private_key&quot;: &quot;cee8fbbab1faac7e823598f57b8b8fce944a7c202d0c106620de8a774f8b34de&quot;,
+        &quot;address&quot;: &quot;EQAqUskYlC8AvkxBpCfryk80l1E7i5DA1tyGiEf96qW9VvWf&quot;
+    }
+}
+</code></pre>
+<h4 class="code-line" data-line-start=28 data-line-end=29 ><a id="Get_wallet_balance_GET_28"></a>Get wallet balance (GET):</h4>
+<pre><code class="has-line-data" data-line-start="30" data-line-end="32">https://localgrams.net/api/wallet/balance?address=YOUR_ADDRESS_IN_BASE64_URL
+</code></pre>
+<h5 class="code-line" data-line-start=33 data-line-end=34 ><a id="Response_Example_33"></a>Response Example:</h5>
+<pre><code class="has-line-data" data-line-start="35" data-line-end="44">{
+    &quot;code&quot;: 200,
+    &quot;message&quot;: &quot;Wallet balance&quot;,
+    &quot;data&quot;: {
+        &quot;state&quot;: 1,
+        &quot;balance&quot;: 1078536986
+    }
+}
+</code></pre>
+<h4 class="code-line" data-line-start=45 data-line-end=46 ><a id="Transfer_GRAMS_POST_45"></a>Transfer GRAMS (POST):</h4>
+<p class="has-line-data" data-line-start="46" data-line-end="47"><code>Content-Type: application/x-www-form-urlencoded</code></p>
+<pre><code class="has-line-data" data-line-start="48" data-line-end="56">https://localgrams.net/api/wallet/transfer
+PARAMS:
+    sender_public=PUBLIC_KEY_OF_SENDER
+    sender_private=PRIVATE_KEY_OF_SENDER
+    sender_address=ADDRESS_OF_SENDER_IN_BASE64_URL
+    dest_address=ADDRESS_OF_DESTINATION_IN_BASE64_URL
+    amount=AMOUNT_IN_NANOGRAMS
+</code></pre>
+<h5 class="code-line" data-line-start=57 data-line-end=58 ><a id="Response_Example_57"></a>Response Example:</h5>
+<pre><code class="has-line-data" data-line-start="59" data-line-end="65">{
+    &quot;code&quot;: 200,
+    &quot;message&quot;: &quot;Success&quot;
+    &quot;transaction&quot;: &quot;2f094f4915c58154c2436634cc8b8fced06cb81bd1576993c3414ee1f2844841&quot;
+}
+</code></pre>
+<h3 class="code-line" data-line-start=66 data-line-end=67 ><a id="Possible_Wallet_states_66"></a>Possible Wallet states:</h3>
+<pre><code class="has-line-data" data-line-start="68" data-line-end="72">0 - uninitialized
+1 - active
+2 - frozen 
+</code></pre>
+
+</body></html>

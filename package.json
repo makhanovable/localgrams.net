@@ -1,0 +1,21 @@
+{
+  "name": "core",
+  "version": "1.0.0",
+  "description": "Gram core",
+  "main": "src/Main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "start": "node src/Main.js"
+  },
+  "keywords": [
+    "Gram",
+    "TON"
+  ],
+  "author": "Makhanov Madiyar",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "ton-client-node-js": "^0.20.0"
+  }
+}
